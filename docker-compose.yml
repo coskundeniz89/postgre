@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  postgres-coskun:
+    container_name: coskun_postgre_container
+    image: mental/postgresql:11
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-coskun}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-123456}
+      PGDATA: /data/postgres
+    volumes:
+      - postgre-coskun-data:/data/postgres
+    ports:
+      - "5100:5432"
+    restart: always
+
+volumes:
+  postgre-coskun-data:
